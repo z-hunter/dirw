@@ -32,6 +32,10 @@ A high-performance utility for near-instant folder size measurements. While othe
    ```powershell
    Import-Module .\DirwTools.psd1
    ```
+or install from PSGallery:
+   ```powershell
+   Install-Module -Name DirwTools
+   ```   
 
 2. **Setup**: Compile the high-performance core (requires .NET SDK):
    ```powershell
