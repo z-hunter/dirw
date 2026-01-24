@@ -1,0 +1,14 @@
+# .gitignore for dirw project
+bin/
+obj/
+publish/
+.vs/
+*.user
+*.suo
+*.sln.docstates
+.DS_Store
+sizew_cache_*
+sizew_shadow.dll
+*.exe
+*.dll
+!sizew/
