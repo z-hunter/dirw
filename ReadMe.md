@@ -1,64 +1,64 @@
 # DirwTools 🚀
 
-**DirwTools** — это набор инструментов для PowerShell, созданный для комфортной и продуктивной работы с файловой системой прямо в консоли. Если вам не хватает наглядности стандартного `dir` и скорости `Get-ChildItem`, этот проект для вас.
+**DirwTools** is a collection of PowerShell utilities designed for a comfortable and productive file management experience directly within your terminal. If you find the standard `dir` lacklustre and `Get-ChildItem` too slow, this project is for you.
 
-## Основные инструменты
+## Core Tools
 
-### 1. `dirw` — Компактный и информативный обзор
-Замена стандартному выводу списков файлов, вдохновленная классическим `dir /w`, но с современными возможностями:
-- **Компактность**: Автоматически распределяет файлы по колонкам, подстраиваясь под ширину вашего окна.
-- **Информативность**: Опциональный вывод размеров и дат изменения в удобном формате.
-- **Умный подсчет**: Встроенная поддержка рекурсивного подсчета размеров папок.
-- **Гибкая сортировка**: Сортируйте по имени, размеру или дате прямо "на лету".
+### 1. `dirw` — Compact & Informative Overview
+A modern replacement for standard file listings, inspired by the classic `dir /w` but packed with powerful features:
+- **Compact Layout**: Automatically organizes files into columns, dynamically adapting to your console window width.
+- **Rich Data**: Optional display of file sizes and modification dates in a human-readable format.
+- **Smart Sizing**: Built-in support for recursive folder size calculation.
+- **Flexible Sorting**: Sort by name, size, or date on the fly.
 
-### 2. `sizew` — Реактивный калькулятор размеров
-Высокоскоростная утилита для мгновенного замера объема директорий. Пока другие инструменты сканируют диск с нуля, `sizew` использует **умные стратегии экономии времени**:
-- **Бинарное кэширование**: Результаты сканирования сохраняются в локальный кэш `.sizew.cache`, что делает повторные замеры мгновенными.
-- **LWT-трекинг (Last Write Time)**: Утилита сравнивает время последнего изменения директории. Если оно не изменилось, `sizew` берет готовый вес из кэша, пропуская сканирование тысяч файлов.
-- **Инкрементальные обновления**: Пересчитываются только те подпапки, в которых действительно произошли изменения.
-- **Вероятностные проверки (CheckRate)**: Система периодически делает "глубокий замер" даже неизмененных папок для 100% уверенности в точности.
-- **Внутрипроцессорный запуск**: В среде PowerShell утилита работает как нативная библиотека (DLL), что исключает задержки на запуск новых процессов.
+### 2. `sizew` — Reactive Folder Size Calculator
+A high-performance utility for near-instant folder size measurements. While other tools scan your drive from scratch every time, `sizew` employs **smart time-saving strategies**:
+- **Binary Caching**: Scan results are stored in a local `.sizew.cache` binary file, making repeated measurements instantaneous.
+- **LWT Tracking (Last Write Time)**: The utility compares the last modified time of a directory. If it hasn't changed, `sizew` pulls the size from the cache, skipping the scan of thousands of files.
+- **Incremental Updates**: Only subfolders that have actually changed are rescanned.
+- **Probabilistic Verification (CheckRate)**: The system periodically performs a "deep scan" even on unchanged folders to ensure 100% accuracy over time.
+- **In-Process Execution**: Within PowerShell, the utility runs as a native library (DLL), eliminating the process creation overhead.
 
 ---
 
-## Быстрый старт
+## Quick Start
 
-1. **Установка**: Склонируйте репозиторий в папку модулей или просто импортируйте манифест:
+1. **Installation**: Clone the repository to your module path or simply import the manifest:
    ```powershell
    Import-Module .\DirwTools.psd1
    ```
 
-2. **Подготовка**: Скомпилируйте высокоскоростное ядро (требуется .NET SDK):
+2. **Setup**: Compile the high-performance core (requires .NET SDK):
    ```powershell
    Install-SizeWBinaries
    ```
 
-3. **Работа**:
+3. **Usage**:
    ```powershell
-   dirw -c        # Список файлов с кэшированными размерами папок
-   sizew -r       # Рекурсивный замер текущей директории
+   dirw -c        # List files with cached folder sizes
+   sizew -r       # Recursive measurement of the current directory
    ```
 
-## Использование (dirw)
-`dirw [путь] [-l] [-s] [-c] [-a] [-sortName|sortSize|sortDate] [-orderAscending|orderDescending]`
+## Usage (dirw)
+`dirw [path] [-l] [-s] [-c] [-a] [-sortName|sortSize|sortDate] [-orderAscending|orderDescending]`
 
-| Флаг | Описание |
+| Flag | Description |
 | :--- | :--- |
-| `-l`, `-long` | Длинный формат (размер + дата) |
-| `-s`, `-size` | Подсчет размера папок (медленно без кэша) |
-| `-c`, `-cachedSize` | **Рекомендуется**: Использовать сверхбыстрый кэш `sizew` |
-| `-a`, `-all` | Показать скрытые файлы |
+| `-l`, `-long` | Long format (size + date) |
+| `-s`, `-size` | Calculate folder sizes (slow without cache) |
+| `-c`, `-cachedSize` | **Recommended**: Use the ultra-fast `sizew` cache |
+| `-a`, `-all` | Show hidden files |
 
-## Использование (sizew)
-`sizew [путь] [-r] [-bc] [-rc] [-raw] [-h]`
+## Usage (sizew)
+`sizew [path] [-r] [-bc] [-rc] [-raw] [-h]`
 
-| Флаг | Описание |
+| Flag | Description |
 | :--- | :--- |
-| `-r`, `-recursive` | Рекурсивный подсчет всех вложенных папок |
-| `-bc`, `-bypassCache` | Не использовать и не обновлять кэш |
-| `-rc`, `-recalculate` | Принудительно пересчитать всё и обновить кэш |
-| `-raw` | Вывод размера в чистых байтах (для скриптов) |
-| `-h`, `-help` | Справка по командам |
+| `-r`, `-recursive` | Recursive calculation of all subfolders |
+| `-bc`, `-bypassCache` | Do not use or update the cache |
+| `-rc`, `-recalculate` | Force recalculate everything and update the cache |
+| `-raw` | Output size in raw bytes (useful for scripts) |
+| `-h`, `-help` | Show command help |
 
 ---
-Лицензия: **GPL-3.0**
+License: **GPL-3.0**
