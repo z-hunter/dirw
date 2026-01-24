@@ -4,7 +4,7 @@ This Commercial License is an alternative to the open-source GPL-3.0-or-later li
 
 ## Grant of License
 
-Under the Commercial License, the Licensor (Michael Voitovich) grants you a perpetual, worldwide, non-exclusive license to:
+Under the Commercial License, the Licensor, Voitovich Software (REGON: 527437223) grants you a perpetual, worldwide, non-exclusive license to:
 
 1.  **Internal Use**: Use DirwTools within your organization for any internal purpose.
 2.  **Redistribution**: Incorporate and distribute DirwTools as part of your own commercial applications, scripts, or systems without disclosing your own source code.
@@ -22,8 +22,8 @@ Under the Commercial License, the Licensor (Michael Voitovich) grants you a perp
 
 ## How to Purchase
 
-For pricing and formal license documents, please contact Michael Voitovich at:
-**[Insert Contact Email/Link Here]**
+For pricing and formal license documents, please contact Voitovich Software at:
+**michael.voitovich@gmail.com**
 
 ---
 *Note: If you do not have a separate commercial agreement signed by the Licensor, your use of this software is governed by the terms of the GNU General Public License v3.0 (GPL-3.0-or-later).*
