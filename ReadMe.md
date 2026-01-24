@@ -11,6 +11,9 @@ A modern replacement for standard file listings, inspired by the classic `dir /w
 - **Smart Sizing**: Built-in support for recursive folder size calculation.
 - **Flexible Sorting**: Sort by name, size, or date on the fly.
 
+![dirw compact layout](dirw2.png)
+![dirw long layout](dirw1.png)
+
 ### 2. `sizew` — Reactive Folder Size Calculator
 A high-performance utility for near-instant folder size measurements. While other tools scan your drive from scratch every time, `sizew` employs **smart time-saving strategies**:
 - **Binary Caching**: Scan results are stored in a local `.sizew.cache` binary file, making repeated measurements instantaneous.
@@ -18,6 +21,8 @@ A high-performance utility for near-instant folder size measurements. While othe
 - **Incremental Updates**: Only subfolders that have actually changed are rescanned.
 - **Probabilistic Verification (CheckRate)**: The system periodically performs a "deep scan" even on unchanged folders to ensure 100% accuracy over time.
 - **In-Process Execution**: Within PowerShell, the utility runs as a native library (DLL), eliminating the process creation overhead.
+
+![sizew performance](dirw3.png)
 
 ---
 
