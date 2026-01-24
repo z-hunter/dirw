@@ -115,6 +115,7 @@ namespace SizeW
                         raw = true;
                         break;
 
+                    case "st":
                     case "showtime":
                         showTime = true;
                         break;

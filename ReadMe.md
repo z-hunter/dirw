@@ -58,6 +58,7 @@ A high-performance utility for near-instant folder size measurements. While othe
 | `-bc`, `-bypassCache` | Do not use or update the cache |
 | `-rc`, `-recalculate` | Force recalculate everything and update the cache |
 | `-raw` | Output size in raw bytes (useful for scripts) |
+| `-st`, `-showtime` | Show total elapsed time |
 | `-h`, `-help` | Show command help |
 
 ---

@@ -141,6 +141,8 @@ function sizew {
   Force re-scan of the directory but update the cache.
 .PARAMETER Raw
   Output raw size in bytes.
+.PARAMETER ShowTime
+  Show total elapsed time.
 #>
     param(
         [Parameter(Position = 0)]
@@ -157,6 +159,9 @@ function sizew {
 
         [switch]$ShowDebug,
         [switch]$Raw,
+        
+        [Alias('st')]
+        [switch]$ShowTime,
 
         [Alias('h')]
         [switch]$Help
@@ -183,6 +188,11 @@ function sizew {
         $SizeW::LibSetDebug($true) 
     }
     
+    $sw = $null
+    if ($ShowTime) {
+        $sw = [System.Diagnostics.Stopwatch]::StartNew()
+    }
+
     $SizeW = "SizeW.Program" -as [type]
     $size = $SizeW::LibMeasureDirectory(
         (Resolve-Path $Path).Path, 
@@ -190,6 +200,11 @@ function sizew {
         $BypassCache, 
         $Recalculate
     )
+
+    if ($ShowTime) {
+        $sw.Stop()
+        Write-Host "[TIME] Elapsed: $($sw.Elapsed.TotalSeconds.ToString('F3')) sec" -ForegroundColor Cyan
+    }
 
     if ($Raw) {
         return $size
