@@ -100,10 +100,10 @@
             Tags         = @('filesystem', 'dir', 'ls', 'powershell', 'cli', 'tools')
 
             # A URL to the license for this module.
-            # LicenseUri = ''
+            LicenseUri   = 'https://github.com/z-hunter/dirw/blob/master/ReadMe.md#license'
 
             # A URL to the main website for this project.
-            # ProjectUri = ''
+            ProjectUri   = 'https://github.com/z-hunter/dirw'
 
             # A URL to an icon representing this module.
             # IconUri = ''

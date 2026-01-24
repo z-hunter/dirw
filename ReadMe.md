@@ -70,5 +70,4 @@ or install from PSGallery:
 | `-st`, `-showtime` | Show total elapsed time |
 | `-h`, `-help` | Show command help |
 
----
-License: **GPL-3.0**
+Dual-licensed under GPL-3.0-or-later or a commercial license; commercial terms: see [COMMERCIAL.md](COMMERCIAL.md)
