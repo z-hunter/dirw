@@ -3,10 +3,12 @@ $SizeW_ModuleRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
 
 function Format-FileSize {
     param ([long]$bytes)
-    if ($bytes -ge 1GB) { "{0:N1} GB" -f ($bytes / 1GB) }
-    elseif ($bytes -ge 1MB) { "{0:N1} MB" -f ($bytes / 1MB) }
-    elseif ($bytes -ge 1KB) { "{0:N1} KB" -f ($bytes / 1KB) }
-    else { "$bytes B" }
+    switch ($bytes) {
+        { $_ -ge 1GB } { return "{0:N1} GB" -f ($_ / 1GB) }
+        { $_ -ge 1MB } { return "{0:N1} MB" -f ($_ / 1MB) }
+        { $_ -ge 1KB } { return "{0:N1} KB" -f ($_ / 1KB) }
+        Default { return "$bytes B" }
+    }
 }
 
 function Import-SizeWAssembly {
