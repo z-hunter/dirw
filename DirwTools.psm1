@@ -325,16 +325,16 @@ function dirw {
     $CalculateFolderSize = $s -or $size -or $c -or $cachedSize
     $UseCache = $c -or $cachedSize
 
-    # Если -s или -size, обязательно включаем Long
+    # If -s or -size is specified, ensure Long format is enabled
     if ($CalculateFolderSize) { $Long = $true }
 
-    # Определяем тип сортировки
+    # Determine sorting type
     $SortBy = "Name"
     if ($ss -or $sortSize) { $SortBy = "Size" }
     elseif ($sd -or $sortDate) { $SortBy = "Date" }
     elseif ($sn -or $sortName) { $SortBy = "Name" }
 
-    # Определяем направление сортировки
+    # Determine sorting direction
     $SortDescending = $false
     if ($od -or $orderDescending) { $SortDescending = $true }
     elseif ($oa -or $orderAscending) { $SortDescending = $false }
@@ -360,7 +360,7 @@ function dirw {
 
     $execExtensions = @('.exe', '.bat', '.cmd', '.ps1', '.msi')
 
-    # Сортировка
+    # Sorting logic
     if ($SortBy -eq "Size" -and $CalculateFolderSize) {
         foreach ($item in $items) {
             if ($item.PSIsContainer) {
@@ -445,14 +445,14 @@ function dirw {
         $columnWidth = $maxRowLength + $spacing
         $columns = [Math]::Max(1, [Math]::Floor($consoleWidth / $columnWidth))
 
-        # Печатаем заголовок над каждой колонкой
+        # Print header above each column
         $headerLine = ""
         for ($colIdx = 0; $colIdx -lt $columns; $colIdx++) {
             $headerLine += $header.PadRight($columnWidth)
         }
         Write-Host $headerLine -ForegroundColor Cyan
 
-        # Выводим в несколько колонок
+        # Output in multiple columns
         for ($i = 0; $i -lt $rows.Count; $i += $columns) {
             for ($j = 0; $j -lt $columns; $j++) {
                 $index = $i + $j
@@ -465,7 +465,7 @@ function dirw {
         }
     }
     else {
-        # краткий вывод в колонках
+        # Brief output in columns
         $maxNameLength = ($items | ForEach-Object { $_.Name.Length } | Measure-Object -Maximum).Maximum
         $consoleWidth = [console]::WindowWidth
         $spacing = 2
