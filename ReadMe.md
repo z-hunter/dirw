@@ -1,4 +1,4 @@
-# DirwTools 🚀
+# DirwTools 
 
 **DirwTools** is a collection of PowerShell utilities designed for a comfortable and productive file management experience directly within your terminal. If you find the standard `Get-ChildItem` lacklustre and recursive folder's size scan too slow, this project is for you.
 
